@@ -35,7 +35,7 @@ COPY src/server.js ./
 
 RUN chown -R node:node ${pkg.installFolder}
 
-RUN yarn install --production && yarn cache clean --all
+RUN yarn config set registry "https://repo.nju.edu.cn/repository/npm/" && yarn install --production && yarn cache clean --all
 
 USER node
 

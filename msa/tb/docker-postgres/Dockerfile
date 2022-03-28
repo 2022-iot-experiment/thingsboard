@@ -15,10 +15,10 @@
 #
 
 FROM thingsboard/openjdk11
-
+RUN sed "s/deb.debian.org/mirrors.nju.edu.cn/g" /etc/apt/sources.list -i && sed "s/security.debian.org/mirrors.nju.edu.cn/g" /etc/apt/sources.list -i
 RUN apt-get update
 RUN apt-get install -y curl gnupg2
-RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main' | tee --append /etc/apt/sources.list.d/pgdg.list > /dev/null
+RUN echo 'deb https://mirror.nju.edu.cn/postgresql/repos/apt/ buster-pgdg main' | tee --append /etc/apt/sources.list.d/pgdg.list > /dev/null
 RUN curl -L https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 ENV PG_MAJOR 12
 RUN apt-get update
